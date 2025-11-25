@@ -11,6 +11,9 @@ out
 .env.development
 .env.production
 
+# Windows reserved filename artifact
+nul
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

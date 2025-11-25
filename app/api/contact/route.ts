@@ -1,27 +1,10 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const contactTo = process.env.CONTACT_TO;
-const contactFrom =
-  process.env.CONTACT_FROM || "Emmaville Website <onboarding@resend.dev>";
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
-    if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json(
-        { error: "RESEND_API_KEY not configured" },
-        { status: 500 },
-      );
-    }
-
-    if (!contactTo) {
-      return NextResponse.json(
-        { error: "CONTACT_TO not configured" },
-        { status: 500 },
-      );
-    }
-
     const body = await request.json();
     const name = String(body?.name || "").trim();
     const email = String(body?.email || "").trim();
@@ -41,6 +24,21 @@ export async function POST(request: Request) {
       );
     }
 
+    const apiKey = process.env.RESEND_API_KEY;
+    const contactTo = process.env.CONTACT_TO;
+    const contactFrom =
+      process.env.CONTACT_FROM || "Emmaville Website <onboarding@resend.dev>";
+
+    // If email service isn't configured yet, short-circuit successfully
+    if (!apiKey || !contactTo) {
+      return NextResponse.json({
+        ok: true,
+        skipped: true,
+        reason: "Email service not configured; message not sent.",
+      });
+    }
+
+    const resend = new Resend(apiKey);
     const replyTo = email;
 
     await resend.emails.send({
