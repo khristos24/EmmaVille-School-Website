@@ -151,7 +151,7 @@ export function ContactSection() {
 
             <div className="bg-gray-200 rounded-2xl h-56 md:h-64 flex items-center justify-center overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.5937282649!2d7.0153!3d4.8156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069ce5ea0c896fb%3A0x9313f2f3e3e17eb7!2sPort%20Harcourt%2C%20Rivers%20State%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=BX4%203RD%20Avenue%20Federal%20Housing%20Estate%20Off%20Agip%20Road%20Rumueme%20Port%20Harcourt%20Nigeria&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

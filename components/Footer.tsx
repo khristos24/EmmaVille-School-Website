@@ -15,6 +15,13 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-6 md:mb-8">
           <div>
+            <div className="mb-3 md:mb-4">
+              <img
+                src="/images/logo.jpg"
+                alt="Emmaville Academy logo"
+                className="h-14 w-14 rounded-full object-cover"
+              />
+            </div>
             <h3
               className="text-xl md:text-2xl text-amber-400 mb-3 md:mb-4"
               style={{ fontFamily: "Playfair Display, serif" }}

@@ -31,23 +31,34 @@ export function AdmissionsSection() {
             className="text-3xl md:text-6xl text-white mb-4 md:mb-6"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Join Our Community
+            Join Our School
           </h2>
           <p className="text-cream-100 text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto">
             Admissions are open for new students. Registration forms are
             available for N5,000. Basic child information is required.
           </p>
 
-          <div className="bg-amber-500/90 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center mb-2">
-              <span className="text-white text-2xl md:text-3xl tracking-wide uppercase">
+          <div className="bg-emerald-900/70 border border-white/15 rounded-2xl p-6 md:p-8 mb-8 max-w-3xl mx-auto shadow-lg space-y-4">
+            <div className="text-center space-y-2">
+              <p className="text-amber-200 font-semibold text-lg md:text-xl uppercase tracking-wide">
+                Big News
+              </p>
+              <p className="text-white text-base md:text-lg leading-relaxed">
+                We’re now an <strong>OSSD Sixth Form Centre</strong>, shaping
+                world-class, future-ready graduates. Partnered with{" "}
+                <strong>Conway International Academy</strong> — first intakes{" "}
+                <strong>January 2026</strong>.
+              </p>
+            </div>
+            <div className="bg-amber-500/90 backdrop-blur-sm rounded-xl p-5 md:p-6 text-center space-y-2 shadow-lg">
+              <span className="text-white text-2xl md:text-3xl tracking-wide uppercase block">
                 January Intake
               </span>
+              <p className="text-white text-sm md:text-base">
+                <strong>Special Offer:</strong> 20-50% discount available for a
+                limited number of January OSSD first intakers.
+              </p>
             </div>
-            <p className="text-white text-sm md:text-base">
-              <strong>Special Offer:</strong> 20-50% discount available for a
-              limited number of January OSSD first intakers.
-            </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

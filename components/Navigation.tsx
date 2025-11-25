@@ -21,9 +21,11 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-semibold">
-              EA
-            </div>
+            <img
+              src="/images/logo.jpg"
+              alt="Emmaville Academy logo"
+              className="h-12 w-12 rounded-full object-cover"
+            />
             <h1
               className="text-emerald-700 text-lg md:text-xl"
               style={{ fontFamily: "Playfair Display, serif" }}
