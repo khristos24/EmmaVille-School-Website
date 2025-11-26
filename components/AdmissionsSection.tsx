@@ -44,10 +44,10 @@ export function AdmissionsSection() {
                 Big News
               </p>
               <p className="text-white text-base md:text-lg leading-relaxed">
-                We’re now an <strong>OSSD Sixth Twelveth Grade Centre</strong>, shaping
+                We’re now an <strong>OSSD, Twelveth Grade Centre</strong>, shaping
                 world-class, future-ready graduates. Partnered with{" "}
                 <strong>Convoy International Academy</strong> — first intakes{" "}
-                <strong>January 2026 (A 7 months program)</strong>.
+                <strong>January 2026 </strong>(A 7 months program).
               </p>
             </div>
             <div className="bg-amber-500/90 backdrop-blur-sm rounded-xl p-5 md:p-6 text-center space-y-2 shadow-lg">
