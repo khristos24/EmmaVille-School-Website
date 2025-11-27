@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Image from "next/image"; // <-- Import Next.js Image component
+import Image from "next/image"; // Next.js optimized image component
 
 export const metadata: Metadata = {
   title: "Emmaville Academy",
@@ -19,19 +19,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white">
-        {/* Example optimized site-wide image */}
+        {/* Site-wide logo (optimized) */}
         <header className="text-center p-4">
           <Image
-            src="/images/logo.jpg"
+            src="/images/logo.jpg" // Make sure this exists in /public/images/
             alt="Emmaville Academy Logo"
-            width={200} // adjust to desired size
+            width={200} // adjust as needed
             height={200}
             priority={true} // loads immediately
             quality={90} // compresses without losing much quality
           />
         </header>
 
-        {/* Page content */}
+        {/* Main page content */}
         {children}
       </body>
     </html>
