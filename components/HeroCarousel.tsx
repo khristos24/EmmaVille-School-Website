@@ -24,7 +24,7 @@ const slides: Slide[] = [
   },
   {
     image: "/images/hero-classroom.jpg",
-    title: "Hands-On Learning in Real Classrooms",
+    title: "Government Approved",
     label: "Outdoor classroom session",
   },
   {
