@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Emmaville Academy",
   description:
     "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
+  icons: {
+    icon: "/images/logo.jpg", // <-- favicon path
+  },
 };
 
 export default function RootLayout({
