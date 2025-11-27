@@ -1,41 +1,55 @@
-// components/SEO.tsx
-import Head from "next/head";
+import type { Metadata } from "next";
+import "./globals.css";
+import Image from "next/image"; // Next.js optimized image component
 
-export default function SEO({
-  title = "Emmaville Academy – Excellence in Education",
-  description = "Private K-12 academy in Port Harcourt focused on excellence, character, and academic growth.",
-  image = "/images/logo.jpg",
-  url = "https://emmavilleacademy.com",
+export const metadata: Metadata = {
+  title: "Emmaville Academy",
+  description:
+    "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
+  icons: {
+    icon: "/images/logo.jpg", // favicon
+  },
+  openGraph: {
+    title: "Emmaville Academy",
+    description:
+      "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
+    images: [
+      {
+        url: "/images/logo.jpg",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Emmaville Academy",
+    description:
+      "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
+    images: ["/images/logo.jpg"],
+  },
+};
+
+export default function RootLayout({
+  children,
 }: {
-  title?: string;
-  description?: string;
-  image?: string;
-  url?: string;
+  children: React.ReactNode;
 }) {
   return (
-    <Head>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="og:url" content={url} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "School",
-            "name": "Emmaville Academy",
-            "address": "BX4 3RD Avenue, Federal Housing Estate, Port Harcourt, Nigeria",
-            "url": url,
-          }),
-        }}
-      />
-    </Head>
+    <html lang="en">
+      <body className="bg-white">
+        <header className="text-center p-4">
+          <Image
+            src="/images/logo.jpg"
+            alt="Emmaville Academy Logo"
+            width={200}
+            height={200}
+            priority={true}
+            quality={90}
+          />
+        </header>
+        {children}
+      </body>
+    </html>
   );
 }
