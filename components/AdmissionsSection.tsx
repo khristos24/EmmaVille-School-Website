@@ -56,7 +56,7 @@ export function AdmissionsSection() {
               </span>
               <p className="text-white text-sm md:text-base">
                 <strong>Special Offer:</strong> 20-50% discount available for a
-                limited number of January OSSD first intakers.
+                limited number of January OSSD first intakes.
               </p>
             </div>
           </div>
