@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Emmaville Academy",
@@ -38,18 +37,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white">
-        {/* Site-wide logo (optimized) */}
-        <header className="text-center p-4">
-          <Image
-            src="/images/logo.jpg"
-            alt="Emmaville Academy Logo"
-            width={200}
-            height={200}
-            priority
-            quality={90}
-          />
-        </header>
-
         {/* Main content */}
         <main>{children}</main>
       </body>
