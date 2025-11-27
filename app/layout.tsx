@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
   icons: {
-    icon: "/images/logo.jpg",
+    icon: "/images/logo.jpg", // favicon
   },
   openGraph: {
     title: "Emmaville Academy",
@@ -36,21 +36,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      {/* Site-wide logo (optimized) */}
-      <header className="text-center p-4">
-        <Image
-          src="/images/logo.jpg"
-          alt="Emmaville Academy Logo"
-          width={200}
-          height={200}
-          priority={true}
-          quality={90}
-        />
-      </header>
+    <html lang="en">
+      <body className="bg-white">
+        {/* Site-wide logo (optimized) */}
+        <header className="text-center p-4">
+          <Image
+            src="/images/logo.jpg"
+            alt="Emmaville Academy Logo"
+            width={200}
+            height={200}
+            priority
+            quality={90}
+          />
+        </header>
 
-      {/* Main page content */}
-      {children}
-    </>
+        {/* Main content */}
+        <main>{children}</main>
+      </body>
+    </html>
   );
 }
