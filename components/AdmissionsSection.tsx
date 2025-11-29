@@ -47,7 +47,7 @@ export function AdmissionsSection() {
                 We’re now an <strong>OSSD, Twelveth Grade Centre</strong>, shaping
                 world-class, future-ready graduates. Partnered with{" "}
                 <strong>Convoy International Academy</strong> — first intakes{" "}
-                <strong>January 2026 </strong>(A 7 months program).
+                <strong>January 2026 </strong>(A 9 months program).
               </p>
             </div>
             <div className="bg-amber-500/90 backdrop-blur-sm rounded-xl p-5 md:p-6 text-center space-y-2 shadow-lg">
