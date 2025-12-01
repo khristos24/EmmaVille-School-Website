@@ -35,7 +35,8 @@ export function AdmissionsSection() {
           </h2>
           <p className="text-cream-100 text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto">
             Admissions are open for new students. Registration forms are
-            available for N5,000. Basic child information is required. Affordable School Fees.
+            available for N5,000. Basic child information is required, and our
+            school fees remain affordable for families.
           </p>
 
           <div className="bg-emerald-900/70 border border-white/15 rounded-2xl p-6 md:p-8 mb-8 max-w-3xl mx-auto shadow-lg space-y-4">
@@ -44,10 +45,11 @@ export function AdmissionsSection() {
                 Big News
               </p>
               <p className="text-white text-base md:text-lg leading-relaxed">
-                We’re now an <strong>OSSD, Twelveth Grade Centre</strong>, shaping
-                world-class, future-ready graduates. Partnered with{" "}
+                We’re now an <strong>OSSD Grade 12 pathway</strong> for students
+                preparing for university. Partnered with{" "}
                 <strong>Convoy International Academy</strong> — first intakes{" "}
-                <strong>January 2026 </strong>(A 9 months program).
+                <strong>January 2026</strong>. A fast-track{" "}
+                <strong>7-month program</strong> to support admissions abroad.
               </p>
             </div>
             <div className="bg-amber-500/90 backdrop-blur-sm rounded-xl p-5 md:p-6 text-center space-y-2 shadow-lg">

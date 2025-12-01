@@ -6,7 +6,11 @@ export const metadata: Metadata = {
   description:
     "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
   icons: {
-    icon: "/images/logo.jpg", // favicon
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", rel: "shortcut icon" },
+    ],
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "Emmaville Academy",
