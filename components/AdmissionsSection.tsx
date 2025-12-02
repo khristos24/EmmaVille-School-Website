@@ -49,7 +49,7 @@ export function AdmissionsSection() {
                 preparing for university. Partnered with{" "}
                 <strong>Convoy International Academy</strong> — first intakes{" "}
                 <strong>January 2026</strong>. A fast-track{" "}
-                <strong>7-month program</strong> to support admissions abroad.
+                <strong>9-months program</strong> to support admissions abroad.
               </p>
             </div>
             <div className="bg-amber-500/90 backdrop-blur-sm rounded-xl p-5 md:p-6 text-center space-y-2 shadow-lg">
