@@ -6,30 +6,7 @@ export const metadata: Metadata = {
   description:
     "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
   icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
-      { url: "/favicon.ico", rel: "shortcut icon" },
-    ],
-    apple: "/favicon.png",
-  },
-  openGraph: {
-    title: "Emmaville Academy",
-    description:
-      "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
-    images: [
-      {
-        url: "/images/logo.jpg",
-        width: 800,
-        height: 600,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Emmaville Academy",
-    description:
-      "Private K-12 academy in Port Harcourt focused on excellence, character, and community.",
-    images: ["/images/logo.jpg"],
+    icon: "/favicon.png", // fallback to /favicon.jpg if png unavailable
   },
 };
 
@@ -38,12 +15,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Emmaville Academy",
+    url: "https://www.emmavilleacademy.com",
+    logo: "https://www.emmavilleacademy.com/favicon.png",
+  };
+
   return (
     <html lang="en">
-      <body className="bg-white">
-        {/* Main content */}
-        <main>{children}</main>
-      </body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+      </head>
+      <body className="bg-white">{children}</body>
     </html>
   );
 }
