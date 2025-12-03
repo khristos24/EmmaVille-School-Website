@@ -4,37 +4,9 @@ import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
+import homeData from "@/content/home.json";
 
-const programs = [
-  {
-    title: "STEM Labs",
-    image: "/images/programs-stem-lab.jpg",
-    description:
-      "Hands-on science, technology, engineering, and mathematics experiences that prepare students for tomorrow's challenges.",
-    label: "Students in the computer lab",
-  },
-  {
-    title: "Visual & Performing Arts",
-    image: "/images/programs-arts.jpg",
-    description:
-      "Nurturing creativity through music, drama, dance, and visual arts with dedicated studios and performance spaces.",
-    label: "School community celebration",
-  },
-  {
-    title: "Sports & Leadership",
-    image: "/images/hero-sports.jpg",
-    description:
-      "Developing physical fitness, teamwork, and leadership skills through athletics and competitive sports programs.",
-    label: "Children playing football",
-  },
-  {
-    title: "Character Education",
-    image: "/images/hero-team.jpg",
-    description:
-      "Building strong moral foundations through community service, mentorship, and values-based learning.",
-    label: "Students presenting a project",
-  },
-];
+const programs = homeData.programs;
 
 export function ProgramsSection() {
   const ref = useRef(null);

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "motion/react";
+import homeData from "@/content/home.json";
 
 interface Slide {
   image: string;
@@ -11,28 +12,7 @@ interface Slide {
   label: string;
 }
 
-const slides: Slide[] = [
-  {
-    image: "/images/hero-campus.jpg",
-    title: "Nurturing Curious Minds and Building Character",
-    label: "Front of Emmaville Academy",
-  },
-  {
-    image: "/images/hero-sports.jpg",
-    title: "Active Learners in a Safe, Supportive Community",
-    label: "Students playing football on the field",
-  },
-  {
-    image: "/images/hero-classroom.jpg",
-    title: "Government Approved",
-    label: "Outdoor classroom session",
-  },
-  {
-    image: "/images/hero-team.jpg",
-    title: "Guided by Dedicated Educators and Mentors",
-    label: "Students and mentor with rocket project",
-  },
-];
+const slides: Slide[] = homeData.hero.slides;
 
 export function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);

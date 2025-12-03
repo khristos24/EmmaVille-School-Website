@@ -3,25 +3,9 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
+import galleryData from "@/content/gallery.json";
 
-const galleryImages = [
-  {
-    image: "/images/community-collage.jpg",
-    label: "Collage of campus life",
-  },
-  {
-    image: "/images/hero-classroom.jpg",
-    label: "Outdoor classroom session",
-  },
-  {
-    image: "/images/programs-arts.jpg",
-    label: "Parents and teachers celebrating",
-  },
-  {
-    image: "/images/about-campus.jpg",
-    label: "Playground and walkway",
-  },
-];
+const galleryImages = galleryData.items;
 
 export function CommunitySection() {
   const ref = useRef(null);

@@ -5,6 +5,7 @@ import { Calendar, FileText } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
+import admissionsData from "@/content/admissions.json";
 
 export function AdmissionsSection() {
   const ref = useRef(null);
@@ -14,7 +15,7 @@ export function AdmissionsSection() {
     <section id="admissions" className="relative py-20 md:py-32" ref={ref}>
       <div className="absolute inset-0">
         <img
-          src="/images/hero-campus.jpg"
+          src={admissionsData.hero.image}
           alt="Emmaville Academy entrance"
           className="w-full h-full object-cover"
         />
@@ -31,34 +32,28 @@ export function AdmissionsSection() {
             className="text-3xl md:text-6xl text-white mb-4 md:mb-6"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Join Our School
+            {admissionsData.hero.title}
           </h2>
           <p className="text-cream-100 text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto">
-            Admissions are open for new students. Registration forms are
-            available for N5,000. Basic child information is required, and our
-            school fees remain affordable for families.
+            {admissionsData.hero.body}
           </p>
 
           <div className="bg-emerald-900/70 border border-white/15 rounded-2xl p-6 md:p-8 mb-8 max-w-3xl mx-auto shadow-lg space-y-4">
             <div className="text-center space-y-2">
               <p className="text-amber-200 font-semibold text-lg md:text-xl uppercase tracking-wide">
-                Big News
+                {admissionsData.osdd.heading}
               </p>
               <p className="text-white text-base md:text-lg leading-relaxed">
-                We’re now an <strong>OSSD Grade 12 pathway</strong> for students
-                preparing for university. Partnered with{" "}
-                <strong>Convoy International Academy</strong> — first intakes{" "}
-                <strong>January 2026</strong>. A fast-track{" "}
-                <strong>9-months program</strong> to support admissions abroad.
+                {admissionsData.osdd.body}
               </p>
             </div>
             <div className="bg-amber-500/90 backdrop-blur-sm rounded-xl p-5 md:p-6 text-center space-y-2 shadow-lg">
               <span className="text-white text-2xl md:text-3xl tracking-wide uppercase block">
-                January Intake
+                {admissionsData.intake.title}
               </span>
               <p className="text-white text-sm md:text-base">
-                <strong>Special Offer:</strong> 20-50% discount available for a
-                limited number of January OSSD first intakes.
+                <strong>{admissionsData.intake.offer.split(":")[0]}:</strong>{" "}
+                {admissionsData.intake.offer.split(":").slice(1).join(":").trim()}
               </p>
             </div>
           </div>

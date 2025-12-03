@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
+import contactData from "@/content/contact.json";
 
 export function ContactSection() {
   const ref = useRef(null);
@@ -85,11 +85,12 @@ export function ContactSection() {
                 <div>
                   <h4 className="text-emerald-800 mb-1">Address</h4>
                   <p className="text-gray-600">
-                    BX4 3RD Avenue, Federal Housing Estate
-                    <br />
-                    Off Agip Road, Rumueme
-                    <br />
-                    Port Harcourt, Rivers State, Nigeria
+                    {contactData.address.lines.map((line, idx) => (
+                      <span key={idx}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
                   </p>
                 </div>
               </div>
@@ -101,10 +102,10 @@ export function ContactSection() {
                 <div>
                   <h4 className="text-emerald-800 mb-1">Phone</h4>
                   <a
-                    href="tel:+2348186281225"
+                    href={`tel:${contactData.phone}`}
                     className="text-gray-600 hover:text-emerald-600 transition-colors"
                   >
-                    +234 818 628 1225
+                    {contactData.phone}
                   </a>
                 </div>
               </div>
@@ -116,10 +117,10 @@ export function ContactSection() {
                 <div>
                   <h4 className="text-emerald-800 mb-1">Email</h4>
                   <a
-                    href="mailto:emmavilleacademy@gmail.com"
+                    href={`mailto:${contactData.email}`}
                     className="text-gray-600 hover:text-emerald-600 transition-colors break-all"
                   >
-                    emmavilleacademy@gmail.com
+                    {contactData.email}
                   </a>
                 </div>
               </div>
@@ -129,7 +130,7 @@ export function ContactSection() {
               <h4 className="text-emerald-800 mb-3">Find Us on Socials</h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://instagram.com/emmavilleacademy"
+                  href={contactData.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-emerald-100 hover:bg-emerald-600 text-emerald-600 hover:text-white p-3 rounded-full transition-colors"
@@ -138,7 +139,7 @@ export function ContactSection() {
                   <Instagram size={20} />
                 </a>
                 <a
-                  href="https://facebook.com/emmavilleacademy"
+                  href={contactData.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-emerald-100 hover:bg-emerald-600 text-emerald-600 hover:text-white p-3 rounded-full transition-colors"
@@ -151,7 +152,7 @@ export function ContactSection() {
 
             <div className="bg-gray-200 rounded-2xl h-56 md:h-64 flex items-center justify-center overflow-hidden">
               <iframe
-                src="https://www.google.com/maps?q=BX4%203RD%20Avenue%20Federal%20Housing%20Estate%20Off%20Agip%20Road%20Rumueme%20Port%20Harcourt%20Nigeria&output=embed"
+                src={contactData.mapEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
+import aboutData from "@/content/about.json";
 
 export function AboutSection() {
   const ref = useRef(null);
@@ -21,8 +22,8 @@ export function AboutSection() {
           >
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
-                src="/images/about-campus.jpg"
-                alt="Campus walkway and playground"
+                src={aboutData.about.image}
+                alt={aboutData.about.imageAlt}
                 className="w-full h-[350px] md:h-[500px] object-cover"
               />
             </div>
@@ -40,18 +41,13 @@ export function AboutSection() {
               className="text-3xl md:text-5xl text-emerald-800 mb-4 md:mb-6"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
-              About Emmaville Academy
+              {aboutData.about.title}
             </h2>
             <p className="text-gray-700 text-base md:text-lg mb-4 md:mb-6 leading-relaxed">
-              Emmaville Academy is a private K-12 school dedicated to nurturing
-              curious minds and building character through a rigorous,
-              personalized curriculum and a supportive community.
+              {aboutData.about.description}
             </p>
             <div className="bg-emerald-50 border-l-4 border-emerald-600 p-4 mb-6 md:mb-8 rounded-r-lg">
-              <p className="text-emerald-800 italic">
-                "Educating the whole child — intellectually, socially, and
-                ethically."
-              </p>
+              <p className="text-emerald-800 italic">{aboutData.about.quote}</p>
             </div>
             <Button
               onClick={() =>

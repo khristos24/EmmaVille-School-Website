@@ -4,6 +4,7 @@ import { AlertCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
+import admissionsData from "@/content/admissions.json";
 
 export function InoculationInfo() {
   const ref = useRef(null);
@@ -27,12 +28,10 @@ export function InoculationInfo() {
                 className="text-xl md:text-2xl text-emerald-800 mb-3"
                 style={{ fontFamily: "Playfair Display, serif" }}
               >
-                Important: Student Health Requirements
+                {admissionsData.health.title}
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                Parents are reminded to ensure all student inoculations are up to
-                date before enrollment. Please contact the school office for
-                approved guidelines and required documentation.
+                {admissionsData.health.body}
               </p>
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <a

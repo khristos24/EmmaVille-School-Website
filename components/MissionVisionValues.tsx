@@ -4,30 +4,18 @@ import { Target, Eye, Heart } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
+import aboutData from "@/content/about.json";
 
-const values = [
-  {
-    icon: Target,
-    title: "Mission",
-    description:
-      "To empower students to achieve academic excellence, discover their unique passions, and become compassionate, responsible leaders.",
-    color: "emerald",
-  },
-  {
-    icon: Eye,
-    title: "Vision",
-    description:
-      "To be the leading academy where students are inspired to shape a better world.",
-    color: "amber",
-  },
-  {
-    icon: Heart,
-    title: "Core Values",
-    description:
-      "Integrity • Curiosity • Resilience • Community • Excellence",
-    color: "emerald",
-  },
-];
+const iconMap = {
+  target: Target,
+  eye: Eye,
+  heart: Heart,
+};
+
+const values = aboutData.values.map((item) => ({
+  ...item,
+  icon: iconMap[item.icon as keyof typeof iconMap] || Target,
+}));
 
 export function MissionVisionValues() {
   const ref = useRef(null);
