@@ -14,6 +14,9 @@ out
 # Windows reserved filename artifact
 nul
 
+# Uploads
+public/uploads
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
