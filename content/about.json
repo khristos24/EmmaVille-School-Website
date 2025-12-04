@@ -1,0 +1,29 @@
+{
+  "about": {
+    "title": "About Emmaville Academy",
+    "description": "Emmaville Academy is a private K-12 school dedicated to nurturing curious minds and building character through a rigorous, personalized curriculum and a supportive community.",
+    "quote": "\"Educating the whole child — intellectually, socially, and ethically.\"",
+    "imageAlt": "Campus walkway and playground",
+    "image": "/images/about-campus.jpg"
+  },
+  "values": [
+    {
+      "icon": "target",
+      "title": "Mission",
+      "description": "To empower students to achieve academic excellence, discover their unique passions, and become compassionate, responsible leaders.",
+      "color": "emerald"
+    },
+    {
+      "icon": "eye",
+      "title": "Vision",
+      "description": "To be the leading academy where students are inspired to shape a better world.",
+      "color": "amber"
+    },
+    {
+      "icon": "heart",
+      "title": "Core Values",
+      "description": "Integrity • Curiosity • Resilience • Community • Excellence",
+      "color": "emerald"
+    }
+  ]
+}

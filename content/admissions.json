@@ -1,0 +1,19 @@
+{
+  "hero": {
+    "title": "Join Our School",
+    "body": "Admissions are open for new students. Registration forms are available for N5,000. Basic child information is required, and our school fees remain affordable for families.",
+    "image": "/images/hero-campus.jpg"
+  },
+  "osdd": {
+    "heading": "Big News",
+    "body": "We’re now an OSSD Grade 12 pathway for students preparing for university. Partnered with Convoy International Academy — first intakes January 2026. A fast-track 7-month program to support admissions abroad."
+  },
+  "intake": {
+    "title": "January Intake",
+    "offer": "Special Offer: 20-50% discount available for a limited number of January OSSD first intakes."
+  },
+  "health": {
+    "title": "Important: Student Health Requirements",
+    "body": "Parents are reminded to ensure all student inoculations are up to date before enrollment. Please contact the school office for approved guidelines and required documentation."
+  }
+}
