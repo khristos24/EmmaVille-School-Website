@@ -3,14 +3,23 @@
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
-import homeData from "@/content/home.json";
-
-const programs = homeData.programs;
+import { useEffect, useRef, useState } from "react";
 
 export function ProgramsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [programs, setPrograms] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("/api/content/home", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.programs) setPrograms(data.programs);
+      })
+      .catch(() => {
+        /* ignore */
+      });
+  }, []);
 
   return (
     <section id="programs" className="py-12 md:py-20 bg-cream-50">

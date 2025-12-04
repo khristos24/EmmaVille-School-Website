@@ -1,17 +1,24 @@
 'use client';
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import contactData from "@/content/contact.json";
+const fallbackContact = {
+  address: { lines: ["BX4 3RD Avenue", "Federal Housing Estate", "Port Harcourt, Nigeria"] },
+  phone: "+2348186281225",
+  email: "emmavilleacademy@gmail.com",
+  social: { instagram: "#", facebook: "#" },
+  mapEmbedUrl: "",
+};
 
 export function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [contactData, setContactData] = useState(fallbackContact);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -46,6 +53,17 @@ export function ContactSection() {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     }
   };
+
+  useEffect(() => {
+    fetch("/api/content/contact", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) setContactData(data);
+      })
+      .catch(() => {
+        /* keep fallback */
+      });
+  }, []);
 
   return (
     <section id="contact" className="py-12 md:py-20 bg-cream-50" ref={ref}>

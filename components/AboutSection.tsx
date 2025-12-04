@@ -3,12 +3,37 @@
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
-import aboutData from "@/content/about.json";
+import { useRef, useEffect, useState } from "react";
+
+interface AboutContent {
+  title: string;
+  description: string;
+  quote: string;
+  image: string;
+  imageAlt?: string;
+}
 
 export function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [about, setAbout] = useState<AboutContent>({
+    title: "About Emmaville Academy",
+    description: "",
+    quote: "",
+    image: "/images/about.jpg",
+    imageAlt: "Students at Emmaville Academy",
+  });
+
+  useEffect(() => {
+    fetch("/api/content/about", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.about) setAbout(data.about);
+      })
+      .catch(() => {
+        // keep fallback
+      });
+  }, []);
 
   return (
     <section id="about" className="py-12 md:py-20 bg-cream-50" ref={ref}>
@@ -22,8 +47,8 @@ export function AboutSection() {
           >
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
-                src={aboutData.about.image}
-                alt={aboutData.about.imageAlt}
+                src={about.image}
+                alt={about.imageAlt || about.title}
                 className="w-full h-[350px] md:h-[500px] object-cover"
               />
             </div>
@@ -41,13 +66,13 @@ export function AboutSection() {
               className="text-3xl md:text-5xl text-emerald-800 mb-4 md:mb-6"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
-              {aboutData.about.title}
+              {about.title}
             </h2>
             <p className="text-gray-700 text-base md:text-lg mb-4 md:mb-6 leading-relaxed">
-              {aboutData.about.description}
+              {about.description}
             </p>
             <div className="bg-emerald-50 border-l-4 border-emerald-600 p-4 mb-6 md:mb-8 rounded-r-lg">
-              <p className="text-emerald-800 italic">{aboutData.about.quote}</p>
+              <p className="text-emerald-800 italic">{about.quote}</p>
             </div>
             <Button
               onClick={() =>

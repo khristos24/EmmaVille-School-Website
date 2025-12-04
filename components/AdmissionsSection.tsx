@@ -4,18 +4,35 @@ import { Button } from "./ui/button";
 import { Calendar, FileText } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
-import admissionsData from "@/content/admissions.json";
+import { useEffect, useRef, useState } from "react";
 
 export function AdmissionsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch("/api/content/admissions", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((json) => setData(json))
+      .catch(() => {
+        /* ignore */
+      });
+  }, []);
+
+  const hero = data?.hero || {
+    title: "Admissions",
+    body: "",
+    image: "/images/hero-campus.jpg",
+  };
+  const osdd = data?.osdd || { heading: "", body: "" };
+  const intake = data?.intake || { title: "", offer: "" };
 
   return (
     <section id="admissions" className="relative py-20 md:py-32" ref={ref}>
       <div className="absolute inset-0">
         <img
-          src={admissionsData.hero.image}
+          src={hero.image}
           alt="Emmaville Academy entrance"
           className="w-full h-full object-cover"
         />
@@ -32,28 +49,32 @@ export function AdmissionsSection() {
             className="text-3xl md:text-6xl text-white mb-4 md:mb-6"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            {admissionsData.hero.title}
+            {hero.title}
           </h2>
           <p className="text-cream-100 text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto">
-            {admissionsData.hero.body}
+            {hero.body}
           </p>
 
           <div className="bg-emerald-900/70 border border-white/15 rounded-2xl p-6 md:p-8 mb-8 max-w-3xl mx-auto shadow-lg space-y-4">
             <div className="text-center space-y-2">
               <p className="text-amber-200 font-semibold text-lg md:text-xl uppercase tracking-wide">
-                {admissionsData.osdd.heading}
+                {osdd.heading}
               </p>
               <p className="text-white text-base md:text-lg leading-relaxed">
-                {admissionsData.osdd.body}
+                {osdd.body}
               </p>
             </div>
             <div className="bg-amber-500/90 backdrop-blur-sm rounded-xl p-5 md:p-6 text-center space-y-2 shadow-lg">
               <span className="text-white text-2xl md:text-3xl tracking-wide uppercase block">
-                {admissionsData.intake.title}
+                {intake.title}
               </span>
               <p className="text-white text-sm md:text-base">
-                <strong>{admissionsData.intake.offer.split(":")[0]}:</strong>{" "}
-                {admissionsData.intake.offer.split(":").slice(1).join(":").trim()}
+                {intake.offer ? (
+                  <>
+                    <strong>{intake.offer.split(":")[0]}:</strong>{" "}
+                    {intake.offer.split(":").slice(1).join(":").trim()}
+                  </>
+                ) : null}
               </p>
             </div>
           </div>

@@ -3,8 +3,7 @@
 import { Target, Eye, Heart } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
-import aboutData from "@/content/about.json";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const iconMap = {
   target: Target,
@@ -12,14 +11,37 @@ const iconMap = {
   heart: Heart,
 };
 
-const values = aboutData.values.map((item) => ({
-  ...item,
-  icon: iconMap[item.icon as keyof typeof iconMap] || Target,
-}));
+interface ValueItem {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+}
 
 export function MissionVisionValues() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [valuesRaw, setValuesRaw] = useState<ValueItem[]>([]);
+
+  useEffect(() => {
+    fetch("/api/content/about", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.values) setValuesRaw(data.values);
+      })
+      .catch(() => {
+        // leave empty
+      });
+  }, []);
+
+  const values = useMemo(
+    () =>
+      valuesRaw.map((item) => ({
+        ...item,
+        icon: iconMap[item.icon as keyof typeof iconMap] || Target,
+      })),
+    [valuesRaw],
+  );
 
   return (
     <section className="py-12 md:py-20 bg-white" ref={ref}>

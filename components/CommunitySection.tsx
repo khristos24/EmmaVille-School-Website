@@ -2,14 +2,23 @@
 
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
-import galleryData from "@/content/gallery.json";
-
-const galleryImages = galleryData.items;
+import { useEffect, useRef, useState } from "react";
 
 export function CommunitySection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [galleryImages, setGalleryImages] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("/api/content/gallery", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.items) setGalleryImages(data.items);
+      })
+      .catch(() => {
+        /* ignore */
+      });
+  }, []);
 
   return (
     <section id="community" className="py-12 md:py-20 bg-white" ref={ref}>

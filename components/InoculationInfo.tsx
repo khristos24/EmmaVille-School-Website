@@ -3,12 +3,26 @@
 import { AlertCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
-import admissionsData from "@/content/admissions.json";
+import { useEffect, useRef, useState } from "react";
 
 export function InoculationInfo() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [health, setHealth] = useState<{ title: string; body: string }>({
+    title: "Health & Immunization",
+    body: "",
+  });
+
+  useEffect(() => {
+    fetch("/api/content/admissions", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.health) setHealth(data.health);
+      })
+      .catch(() => {
+        /* ignore */
+      });
+  }, []);
 
   return (
     <section className="py-8 md:py-12 bg-amber-50" ref={ref}>
@@ -28,10 +42,10 @@ export function InoculationInfo() {
                 className="text-xl md:text-2xl text-emerald-800 mb-3"
                 style={{ fontFamily: "Playfair Display, serif" }}
               >
-                {admissionsData.health.title}
+                {health.title}
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                {admissionsData.health.body}
+                {health.body}
               </p>
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <a

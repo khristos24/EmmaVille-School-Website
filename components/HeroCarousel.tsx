@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "motion/react";
-import homeData from "@/content/home.json";
 
 interface Slide {
   image: string;
@@ -12,10 +11,33 @@ interface Slide {
   label: string;
 }
 
-const slides: Slide[] = homeData.hero.slides;
+const initialSlides: Slide[] = [
+  // will be replaced by live content
+  // keep a minimal fallback
+  {
+    image: "/images/hero-campus.jpg",
+    title: "Welcome to Emmaville Academy",
+    label: "Campus life",
+  },
+];
 
 export function HeroCarousel() {
+  const [slides, setSlides] = useState<Slide[]>(initialSlides);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    fetch("/api/content/home", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.hero?.slides?.length) {
+          setSlides(data.hero.slides);
+          setCurrentSlide(0);
+        }
+      })
+      .catch(() => {
+        // leave fallback
+      });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
