@@ -34,13 +34,17 @@ async function readFromBlob(section: string) {
   const token = getBlobToken();
   if (!token) return null;
   const key = `content/${section}.json`;
+  // Try head first to capture last-modified
   try {
-    // Try head first
     const h = await head(key, { token });
     const url = (h as any)?.downloadUrl;
+    const lastModified = (h as any)?.lastModified || h?.lastModified || undefined;
     if (url) {
       const res = await fetch(url, { cache: "no-store" });
-      if (res.ok) return res.json();
+      if (res.ok) {
+        const data = await res.json();
+        return { data, lastModified };
+      }
     }
   } catch (err) {
     console.error("Blob head error", err);
@@ -49,10 +53,12 @@ async function readFromBlob(section: string) {
     const { blobs } = await list({ prefix: key, token });
     const match = blobs.find((b) => b.pathname === key);
     const url = (match as any)?.downloadUrl;
+    const lastModified = (match as any)?.uploadedAt || (match as any)?.lastModified;
     if (!url) return null;
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) return null;
-    return res.json();
+    const data = await res.json();
+    return { data, lastModified };
   } catch (err) {
     console.error("Blob read error", err);
     return null;
@@ -87,9 +93,13 @@ export async function GET(
       return NextResponse.json({ error: "Invalid section" }, { status: 400, headers: corsHeaders });
     }
     // Try blob first (for production), fall back to local file (dev)
-    const blobData = await readFromBlob(section);
-    if (blobData) {
-      return NextResponse.json(blobData, { headers: corsHeaders });
+    const blobResult = await readFromBlob(section);
+    if (blobResult?.data) {
+      const payload = {
+        ...blobResult.data,
+        _lastModified: blobResult.lastModified || null,
+      };
+      return NextResponse.json(payload, { headers: corsHeaders });
     }
     const filePath = getContentPath(section);
     const data = await readFile(filePath, "utf-8");

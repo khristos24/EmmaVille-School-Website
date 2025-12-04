@@ -39,13 +39,16 @@ export function HeroCarousel() {
       });
   }, []);
 
+  // Autoplay: restart the timer whenever the slide list changes
   useEffect(() => {
+    if (!slides.length) return;
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
