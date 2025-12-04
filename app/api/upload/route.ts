@@ -7,6 +7,14 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
+function getBlobToken() {
+  return (
+    process.env.BLOB_READ_WRITE_TOKEN ||
+    process.env.emmavilleacademystorage_READ_WRITE_TOKEN ||
+    process.env.EMMAVILLEACADEMYSTORAGE_READ_WRITE_TOKEN
+  );
+}
+
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
@@ -22,7 +30,7 @@ export async function POST(req: Request) {
 
     const blob = await put(`uploads/${Date.now()}-${file.name}`, file, {
       access: "public",
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+      token: getBlobToken(),
     });
 
     return NextResponse.json({ url: blob.url }, { headers: corsHeaders });
