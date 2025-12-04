@@ -15,6 +15,7 @@ const allowedSections = new Set([
   "admissions",
   "gallery",
   "contact",
+  "settings",
 ]);
 
 function getContentPath(section: string) {

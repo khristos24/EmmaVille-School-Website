@@ -1,0 +1,18 @@
+{
+  "admin": {
+    "username": "emma ville academy",
+    "passwordHash": "$2a$10$jAqm0vQ9d3JongjNrqUgc.EL4Ntwaz0U0Olqo7AXlTCv9oughtdw2"
+  },
+  "profile": {
+    "name": "Admin",
+    "email": "admin@emmavilleacademy.com",
+    "role": "Administrator"
+  },
+  "general": {
+    "siteName": "Emmaville Academy",
+    "tagline": "Excellence in Education",
+    "phone": "+2348186281225",
+    "address": "BX4 3RD Avenue, Federal Housing Estate, Port Harcourt, Nigeria",
+    "website": "https://www.emmavilleacademy.com"
+  }
+}
