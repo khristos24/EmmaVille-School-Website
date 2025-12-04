@@ -37,8 +37,10 @@ async function readFromBlob(section: string) {
   // Try head first to capture last-modified
   try {
     const h = await head(key, { token });
-    const url = (h as any)?.downloadUrl;
-    const lastModified = (h as any)?.lastModified || h?.lastModified || undefined;
+    const anyHead = h as any;
+    const url = anyHead?.downloadUrl;
+    const lastModified =
+      anyHead?.lastModified || anyHead?.uploadedAt || undefined;
     if (url) {
       const res = await fetch(url, { cache: "no-store" });
       if (res.ok) {
